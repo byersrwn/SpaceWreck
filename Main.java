@@ -5,8 +5,6 @@ import java.util.HashMap;
 
 public class Main{
     public static void main(String[] args){
-        //String filename = args[0];
-        //SpaceWreck sw = new SpaceWreck(filename);
         SpaceWreck sw = new SpaceWreck("0-sample_in.txt");
         boolean possible = sw.readFile();
         if(!possible){
