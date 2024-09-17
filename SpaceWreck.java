@@ -175,14 +175,6 @@ public class SpaceWreck {
                         existingKeyInMap = 1;
                         break;
                 }
-                // for(State s : this.stateGraph.keySet()){
-                //     if(s.equals(newState)){
-                //         //System.out.println("KEY ALREADY FOUND");
-                //         newMove.to = s;
-                //         existingKeyInMap = 1;
-                //         break;
-                //     }
-                // }
                 this.stateGraph.get(currState).add(newMove);
                 if(winflag == 1){
                     if(this.winStates.size() == 0){
@@ -225,10 +217,6 @@ public class SpaceWreck {
         } 
         return false;
     }
-    //TODO: each cbild should only have 1 parent?
-    // L10 lexographically shorter than L1?
-    // Optimize to search lexographically shortest child first? How to make sure we dont loose?
-
     public void BFS(){ //create data structure of State to parent State.
         Queue<State> queue = new ArrayDeque<>();
         HashMap<State, State> parents = new HashMap<>();
@@ -264,16 +252,12 @@ public class SpaceWreck {
         for(StateEdge se : posibleMoves){
             addingChar.add(se.change + "R");
         }
-        //System.out.println("BEFORE");
         for(int i = 0 ; i < addingChar.size() ; i++){
-            //System.out.println(addingChar.get(i));
         }
         LexComparator lexCom = new LexComparator(); 
         Collections.sort(addingChar, lexCom);
-        //System.out.println("AFTER");
 
         for(int i = 0 ; i < addingChar.size() ; i++){
-            //System.out.println(addingChar.get(i));
         }
         for(int i = 0 ; i < addingChar.size() ; i++){
             String curr = addingChar.get(i);
@@ -281,7 +265,6 @@ public class SpaceWreck {
         }
 
         for(int i = 0 ; i < lexInOrder.size() ; i++){
-            //System.out.println(lexInOrder.get(i));
             String currChange = lexInOrder.get(i);
             for(int j = 0 ; j < posibleMoves.size() ; j++){
                 if(posibleMoves.get(j).change.equals(currChange)){
@@ -289,15 +272,6 @@ public class SpaceWreck {
                 }
             }
         }
-       // System.out.println("BEFORE");
-
-        // for(StateEdge se : lexEdges){
-        //     System.out.println(se.change);
-
-        // }
-
-        
-        //System.out.println("DONE");
 
         return lexEdges;
     }
@@ -323,12 +297,10 @@ public class SpaceWreck {
         for(int i = 0 ; i < this.winStates.size() ; i++){
             State curr = this.winStates.get(i);
             StringBuilder sb = new StringBuilder();
-            //sb.append(curr.LuckyState + curr.RocketState);
             while(this.parentTable.containsKey(curr)){
                     State par = this.parentTable.get(curr);
                     String move = stateChange(par.LuckyState + par.RocketState , curr.LuckyState + curr.RocketState);
                     sb.append(move);
-                    //sb.append(" | " + par.LuckyState + par.RocketState);
                     curr = par;
             }
             paths.add(reverseList(sb.toString()));
