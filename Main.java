@@ -25,10 +25,6 @@ public class Main{
 
         Collections.sort(ret);
         System.out.println(ret.get(0));
-
-
-
-
         
     }
 
