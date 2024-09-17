@@ -1,10 +1,6 @@
 import java.util.Comparator;
 
 public class LexComparator implements Comparator<String>{
-    // String str;
-    // public Compare(String s){
-    //     this.str = s;
-    // }
     @Override
     public int compare(String o1, String o2) {
         int smallest;
@@ -33,7 +29,6 @@ public class LexComparator implements Comparator<String>{
 
         }
         return 0;
-        //throw new UnsupportedOperationException("Unimplemented method 'compare'");
     }
 
 
